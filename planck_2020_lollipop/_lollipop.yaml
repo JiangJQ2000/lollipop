@@ -7,3 +7,5 @@ cl_cov_file: clcov_lolEB_NPIPE.fits
 hartlap_factor: false
 marginalised_over_covariance: true
 Nsim: 400
+
+lmax: 150

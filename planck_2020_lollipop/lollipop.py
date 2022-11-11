@@ -55,7 +55,7 @@ class _LollipopLikelihood(InstallableLikelihood):
             )
 
         # Binning (fixed binning)
-        self.bins = tools.get_binning()
+        self.bins = tools.get_binning(getattr(self, "lmax", 150))
         self.log.debug(f"lmax = {self.bins.lmax}")
 
         # Data (ell,ee,bb,eb)

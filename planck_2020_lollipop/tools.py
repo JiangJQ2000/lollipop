@@ -21,14 +21,21 @@ def read_dl(datafile):
     return dl
 
 
-def get_binning():
+def get_binning(lmax=150):
     dl = 10
     llmin = 2
     llmax = 35
-    hlmin = 36
-    hlmax = 150
-    lmins = list(range(llmin, llmax + 1)) + list(range(hlmin, hlmax - dl + 2, dl))
-    lmaxs = list(range(llmin, llmax + 1)) + list(range(hlmin + dl - 1, hlmax + 1, dl))
+    if lmax == 150:
+        hlmin = 36
+        hlmax = 150
+        lmins = list(range(llmin, llmax + 1)) + list(range(hlmin, hlmax - dl + 2, dl))
+        lmaxs = list(range(llmin, llmax + 1)) + list(range(hlmin + dl - 1, hlmax + 1, dl))
+    elif lmax <= 35:
+        llmax = lmax
+        lmins = list(range(llmin, llmax + 1))
+        lmaxs = list(range(llmin, llmax + 1))
+    else:
+        raise NotImplementedError
     binc = Bins(lmins, lmaxs)
     return binc
 
